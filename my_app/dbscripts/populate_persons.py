@@ -12,13 +12,13 @@ class PopulatePersons:
     
     def run(self):
         fake = Faker()
-        LIMIT = 1000
+        LIMIT = 10
         for i in range(LIMIT):
             person_obj = Person.objects.create(
                 fname = fake.first_name(),
                 lname = fake.last_name(),
                 age = random.randrange(2,99),
-                gender = random.choice(["M", "F", "O"]),
+                gender = random.choice([Person.GENDER.male, Person.GENDER.female, Person.GENDER.others]),
                 email= fake.email()
             )  
             print(person_obj)      
